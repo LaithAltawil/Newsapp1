@@ -11,18 +11,18 @@ data class Page(
 
 val pages = listOf(  Page(
     "Lorem ipsum is simply dummy",
-    "Lorem ipsum is simply dummy text of the printing and typesetting inddustry",
+    "Lorem ipsum is simply dummy text of the printing and typesetting industry",
     R.drawable.onboarding1
 ),
     Page(
         "Lorem ipsum is simply dummy",
-        "Lorem ipsum is simply dummy text of the printing and typesetting inddustry",
+        "Lorem ipsum is simply dummy text of the printing and typesetting industry",
         R.drawable.onboarding2
     ),
     Page(
         "Lorem ipsum is simply dummy",
-        "Lorem ipsum is simply dummy text of the printing and typesetting inddustry",
+        "Lorem ipsum is simply dummy text of the printing and typesetting industry",
         R.drawable.onboarding3
-    ),
+    )
 
 )

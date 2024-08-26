@@ -15,12 +15,16 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.loc.newsapp.presentation.Dimens.MediumPadding2
 import com.loc.newsapp.presentation.Dimens.pageindicatorwidth
+import com.loc.newsapp.presentation.common.NewsButton
+import com.loc.newsapp.presentation.common.NewsTextButton
 import com.loc.newsapp.presentation.onboarding.components.OnBoardingPage
 import com.loc.newsapp.presentation.onboarding.components.pageIndicatior
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -62,10 +66,42 @@ fun OnboardingScreen() {
                 selectedPage = pagerstate.currentPage
             )
 
+            Row(verticalAlignment = Alignment.CenterVertically) {
+
+                val scope = rememberCoroutineScope()
+
+                if (buttonState.value[0].isNotEmpty()) {
+                    NewsTextButton(text = buttonState.value[0], onClick = {
+                        scope.launch {
+                            pagerstate.animateScrollToPage(page = pagerstate.currentPage - 1)
+                        }
+                    }
+                    )
+                }
+                NewsButton(text = buttonState.value[1], onClick = {
+                    scope.launch {
+                        if (pagerstate.currentPage == 3) {
+                            //TODO Navigate to home screen
+
+                        } else {
+                            pagerstate.animateScrollToPage(
+                                page = pagerstate.currentPage + 1
+                            )
+                        }
+                    }
+
+
+                })
+
+            }
+
 
         }
+        Spacer(modifier = Modifier.weight(0.5f))
+
 
     }
 
-
 }
+
+

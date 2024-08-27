@@ -5,6 +5,7 @@ import com.loc.newsapp.Data.manager.LocalUserManagerImpl
 import com.loc.newsapp.domain.manager.LocalUSerManager
 import com.loc.newsapp.domain.usecases.AppEntryUseCases
 import com.loc.newsapp.domain.usecases.ReadAppEntry
+import com.loc.newsapp.domain.usecases.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +25,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAppEntryUseCases()=AppEntryUseCases(
-        //TODO: ADD USE CASES
+    fun provideAppEntryUseCases(
+        LocalUSerManager: LocalUSerManager
+    )=AppEntryUseCases(
+        readAppEntry = ReadAppEntry(LocalUSerManager),
+        saveAppEntry = SaveAppEntry(LocalUSerManager)
+
 
     )
 

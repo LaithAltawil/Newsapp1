@@ -34,7 +34,7 @@ import com.loc.newsapp.presentation.Dimens.articlecardsize
 
 @Composable
 fun ArticleCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     article: Article,
     onClick: () -> Unit
 ) {
